@@ -9,7 +9,7 @@ Welcome to my LeetCode solutions repository! This repository contains my solutio
 - **Name:** Pragati Gomare
 - **Language:** Java
 - **Focus Areas:** Data Structures & Algorithms, Problem Solving
-- **LeetCode Profile:** https://leetcode.com/u/Pragatitech14/
+- **LeetCode Profile:** https://leetcode.com/u/PragatiGomare/
 
 ---
 
