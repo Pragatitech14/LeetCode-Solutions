@@ -5,23 +5,26 @@ class Solution {
 
         for(int i=0;i<s.length();i++)
         {
-             HashMap<Character,Integer> map = new HashMap<>();
+            int [] freq = new int[26];
             for(int j=i;j<s.length();j++)
             {
                
                
                     char ch=s.charAt(j);
-                    map.put(ch,map.getOrDefault(ch,0) +1);
+                    freq[ch-'a']++;
                 
 
                 int maxfreq = 0;
                 int minfreq =Integer.MAX_VALUE;
 
 
-                for(int freq:map.values())
+                for(int k=0;k<freq.length;k++)
                 {
-                    maxfreq=Math.max(freq,maxfreq);
-                     minfreq=Math.min(freq,minfreq);
+                    if(freq[k]>0)
+                    {
+                    maxfreq=Math.max(freq[k],maxfreq);
+                     minfreq=Math.min(freq[k],minfreq);
+                    }
 
                   
                 }
