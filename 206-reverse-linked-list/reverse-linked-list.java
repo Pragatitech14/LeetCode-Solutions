@@ -16,8 +16,7 @@ class Solution {
 
         while(curr!=null)
         {
-            
-            front = curr.next;
+           front = curr.next;
             curr.next =prev;
             prev = curr;
             curr = front ;
