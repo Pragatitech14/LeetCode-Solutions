@@ -11,32 +11,34 @@
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
-        ArrayList<Integer> arr = new ArrayList<>();
-        ListNode newlist1 = list1;
-        ListNode newlist2 = list2;
+        
+        ListNode t1 = list1;
+        ListNode t2 = list2;
+        ListNode dummy = new ListNode(-1);
+        ListNode temp =dummy;
 
-        while(newlist1!=null)
+        while(t1!=null && t2!=null)
         {
-            arr.add(newlist1.val);
-            newlist1=newlist1.next;
-        }
-        while(newlist2!=null)
-        {
-            arr.add(newlist2.val);
-            newlist2=newlist2.next;
-        }
-        Collections.sort(arr);
-        if(arr.size() == 0) return null;
-        ListNode temp = new ListNode(arr.get(0));
-        ListNode head =temp;
-
-        for(int i=1;i<arr.size();i++)
-        {
-            temp.next =new ListNode(arr.get(i));
+           if(t1.val<t2.val)
+           {
+            temp.next=t1;
+            t1=t1.next;
             temp=temp.next;
+           }
+           else
+           {
+            temp.next=t2;
+            t2=t2.next;
+            temp=temp.next;
+           }
         }
+        if(t1!=null) 
+        {temp.next =t1;}
+        else{
+            temp.next=t2;
+        }   
 
-        return head;
+        return dummy.next;
 
     }
 }
