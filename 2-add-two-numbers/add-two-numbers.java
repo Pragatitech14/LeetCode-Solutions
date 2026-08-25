@@ -1,45 +1,36 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
+import java.math.BigInteger;
 class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) 
+    {
+     StringBuilder sb1 = new StringBuilder();
+     StringBuilder sb2 = new StringBuilder();
 
-        ListNode result = new ListNode( ); 
-        ListNode ptr = result;
-        int carry = 0;
+     while(l1!=null)
+     {
+        sb1.append(l1.val);
+        l1=l1.next;
+     }
+     while(l2!=null)
+     {
+        sb2.append(l2.val);
+        l2=l2.next;
+     }
+     sb1.reverse();
+     sb2.reverse();
 
-        while (l1 != null || l2 != null) {
+     BigInteger b1 = new BigInteger(sb1.toString());
+     BigInteger b2 = new BigInteger(sb2.toString());
 
-            int sum = carry;
+     BigInteger sum = b1.add(b2);
+     String result = sum.toString();
 
-            if (l1 != null) {
-                sum += l1.val;
-                l1 = l1.next;
-            }
-
-            if (l2 != null) {
-                sum += l2.val;
-                l2 = l2.next;
-            }
-
-            carry = sum / 10;
-            sum = sum % 10;
-
-            ptr.next = new ListNode(sum);
-            ptr = ptr.next;
-        }
-
-        if (carry == 1) {
-            ptr.next = new ListNode(1);
-        }
-
-        return result.next;
+    ListNode dummy = new ListNode(-1);
+    ListNode curr = dummy;
+     for(int i=result.length()-1;i>=0;i--)
+     {
+        curr.next = new ListNode(result.charAt(i)-'0');
+        curr=curr.next;
+     }
+     return dummy.next;
     }
 }
