@@ -1,35 +1,25 @@
 class Solution {
     public int[] rearrangeArray(int[] nums) 
     {
-       ArrayList<Integer> mappos = new ArrayList<>();
-       ArrayList<Integer> mapNeg = new ArrayList<>();
+        int n = nums.length;
+        int [] ans = new int[n];
 
-       for(int i=0;i<nums.length;i++)
+      int posindex =0;
+      int negindex =1;
+       for(int i=0;i<n;i++)
        {
-        if(nums[i]>=0)
-        {
-            mappos.add(nums[i]);
-        }
-        else
-        {
-           mapNeg.add(nums[i]);
-        }
-       }
-       int j=0;
-       for(int i=0;i<nums.length;i++)
-       {
-        if(i%2==0)
+         if(nums[i]>0)
          {
-           int temp = mappos.get(j);
-           nums[i]=temp;
+            ans[posindex] = nums[i];
+            posindex+=2;
          }
          else
          {
-            int temp = mapNeg.get(j);
-            nums[i]=temp;
-            j++;
+            ans[negindex] = nums[i];
+            negindex+=2;
          }
        }
-         return nums;
+     
+         return ans;
     }
 }
