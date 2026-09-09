@@ -12,11 +12,7 @@ class Solution {
              count++;
              lastsmallelement=nums[i];
             }
-            else if(lastsmallelement == nums[i])
-            {
-
-            }
-            else
+            else if(lastsmallelement != nums[i])
             {
                 lastsmallelement=nums[i];
                 count =1;
