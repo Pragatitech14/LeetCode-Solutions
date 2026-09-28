@@ -1,27 +1,25 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
+         ArrayList<List<Integer>> finalList = new ArrayList<>();
 
-        ArrayList<List<Integer>> list = new ArrayList<>();
-
-        for(int r=1;r<=numRows;r++)
+        for(int i=0;i<numRows;i++)
         {
-            ArrayList<Integer> temp = new ArrayList<>();
-            for(int c=1;c<=r;c++)
-            {
-              temp.add(funnCr(r-1,c-1));
-            }
-            list.add(temp);
+           finalList.add(getRow(i));
         }
-       return list;  
+        return finalList;
     }
-    public int funnCr(int r,int c)
-    {
-        int res = 1;
-        for(int i=0;i<c;i++)
+    public List<Integer> getRow(int rowIndex) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+       int n =rowIndex+1;
+        long ans =1;
+        list.add((int) ans);
+        for(int i=1;i<=rowIndex;i++)
         {
-            res = res*(r-i);
-            res=res/(i+1);
+           ans = ans*(n-i);
+           ans=ans/i;
+           list.add((int)ans);
         }
-        return res;
+        return list;
     }
 }
